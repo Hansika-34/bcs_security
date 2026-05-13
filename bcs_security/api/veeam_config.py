@@ -1,0 +1,3 @@
+VEEAM_URL = "https://103.231.215.171:9419"
+USERNAME = "BackupUser"
+PASSWORD = "B@ck@435$%$#23"

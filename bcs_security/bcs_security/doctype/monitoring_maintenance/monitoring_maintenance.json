@@ -1,0 +1,99 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-04-29 10:48:02.001098",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "zabbix_host",
+  "maintenance_name",
+  "period_type",
+  "status",
+  "zabbix_maintenance_id",
+  "column_break_ykyr",
+  "zabbix_host_id",
+  "active_since",
+  "active_till",
+  "message"
+ ],
+ "fields": [
+  {
+   "fieldname": "zabbix_host",
+   "fieldtype": "Link",
+   "label": "Zabbix Host",
+   "options": "Monitoring Host"
+  },
+  {
+   "fieldname": "column_break_ykyr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "zabbix_host_id",
+   "fieldtype": "Data",
+   "label": "Zabbix Host ID"
+  },
+  {
+   "fieldname": "maintenance_name",
+   "fieldtype": "Data",
+   "label": "Maintenance Name"
+  },
+  {
+   "fieldname": "active_since",
+   "fieldtype": "Datetime",
+   "label": "Active Since"
+  },
+  {
+   "fieldname": "active_till",
+   "fieldtype": "Datetime",
+   "label": "Active Till"
+  },
+  {
+   "fieldname": "period_type",
+   "fieldtype": "Select",
+   "label": "Period Type",
+   "options": "\nOne Time\nDaily\nWeekly"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nDraft\nCreated\nFailed"
+  },
+  {
+   "fieldname": "zabbix_maintenance_id",
+   "fieldtype": "Data",
+   "label": "Zabbix Maintenance ID"
+  },
+  {
+   "fieldname": "message",
+   "fieldtype": "Small Text",
+   "label": "Message"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-05-09 14:53:26.627490",
+ "modified_by": "Administrator",
+ "module": "BCS Security",
+ "name": "Monitoring Maintenance",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

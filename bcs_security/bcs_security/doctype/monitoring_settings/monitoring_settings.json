@@ -1,0 +1,85 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-12 15:21:29.547660",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "zabbix_url",
+  "default_host_group_id",
+  "windows_template_id",
+  "enable_integration",
+  "column_break_eqhz",
+  "api_token",
+  "linux_template_id",
+  "agent_port"
+ ],
+ "fields": [
+  {
+   "fieldname": "zabbix_url",
+   "fieldtype": "Data",
+   "label": "Zabbix URL"
+  },
+  {
+   "fieldname": "column_break_eqhz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "api_token",
+   "fieldtype": "Password",
+   "label": "API Token"
+  },
+  {
+   "fieldname": "default_host_group_id",
+   "fieldtype": "Data",
+   "label": "Default Host Group ID"
+  },
+  {
+   "fieldname": "linux_template_id",
+   "fieldtype": "Data",
+   "label": "Linux Template ID"
+  },
+  {
+   "fieldname": "windows_template_id",
+   "fieldtype": "Data",
+   "label": "Windows Template ID"
+  },
+  {
+   "fieldname": "agent_port",
+   "fieldtype": "Int",
+   "label": "Agent Port"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_integration",
+   "fieldtype": "Check",
+   "label": "Enable Integration"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-03-12 15:25:34.675632",
+ "modified_by": "Administrator",
+ "module": "BCS Security",
+ "name": "Monitoring Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

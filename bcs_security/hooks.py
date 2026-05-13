@@ -27,6 +27,9 @@ app_license = "mit"
 # include js, css files in header of desk.html
 # app_include_css = "/assets/bcs_security/css/bcs_security.css"
 # app_include_js = "/assets/bcs_security/js/bcs_security.js"
+app_include_js = [
+    "https://cdn.jsdelivr.net/npm/chart.js"
+]
 
 # include js, css files in header of web template
 # web_include_css = "/assets/bcs_security/css/bcs_security.css"
@@ -137,13 +140,11 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+    "Zabbix Maintenance": {
+        "after_insert": "bcs_security.api.zabbix_maintenance.after_insert"
+    }
+}
 
 # Scheduled Tasks
 # ---------------
