@@ -1,11 +1,24 @@
 import requests
 import frappe
 
-MIDDLEWARE_URL = "http://103.231.215.171:8000/zabbix/"
+
 API_KEY = "Bcs@1234"
 
 
-def zabbix_request(method, params):
+def zabbix_request(method, params, zabbix_server=None):
+
+    # =========================
+    # GET MONITORING SETTINGS
+    # =========================
+    settings = frappe.get_doc(
+        "Monitoring Settings",
+        zabbix_server
+    )
+
+    middleware_url = (
+        settings.custom_api_url.rstrip("/")
+        + "/zabbix/"
+    )
 
     payload = {
         "api_key": API_KEY,
@@ -16,7 +29,7 @@ def zabbix_request(method, params):
     try:
 
         response = requests.post(
-            MIDDLEWARE_URL,
+            middleware_url,
             json=payload,
             timeout=30
         )
@@ -24,6 +37,7 @@ def zabbix_request(method, params):
         return response.json()
 
     except Exception:
+
         frappe.log_error(
             frappe.get_traceback(),
             "Middleware API Error"

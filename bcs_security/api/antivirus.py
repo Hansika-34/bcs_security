@@ -206,3 +206,111 @@ def install_av_on_vm(vm_name):
         )
 
         vm.db_set("custom_antivirus_status","Failed")
+
+
+import frappe
+import requests
+
+
+@frappe.whitelist()
+def sync_license(docname):
+
+    # ----------------------------------------
+    # GET ANTIVIRUS SERVER DOC
+    # ----------------------------------------
+
+    doc = frappe.get_doc(
+        "Antivirus Server",
+        docname
+    )
+
+    # ----------------------------------------
+    # VALIDATE API URL
+    # ----------------------------------------
+
+    if not doc.custom_api_url:
+        frappe.throw(
+            "API URL not configured"
+        )
+
+    # ----------------------------------------
+    # API ENDPOINT
+    # ----------------------------------------
+
+    api_url = (
+        f"{doc.custom_api_url}"
+        "/api/v1/av-license"
+    )
+
+    # ----------------------------------------
+    # PAYLOAD
+    # ----------------------------------------
+
+    payload = {
+        "serverIp": doc.server_ip
+    }
+
+    # ----------------------------------------
+    # CALL API
+    # ----------------------------------------
+
+    response = requests.post(
+        api_url,
+        json=payload,
+        timeout=60
+    )
+
+    if response.status_code != 200:
+
+        frappe.throw(response.text)
+
+    data = response.json()
+
+    # ----------------------------------------
+    # UPDATE LICENSE FIELDS
+    # ----------------------------------------
+
+    doc.company_name = data.get(
+        "companyName"
+    )
+
+    doc.product_name = data.get(
+        "productName"
+    )
+
+    doc.product_key = data.get(
+        "productKey"
+    )
+
+    doc.product_type = data.get(
+        "productType"
+    )
+
+    doc.installation_number = data.get(
+        "installationNumber"
+    )
+
+    doc.license_valid_till = data.get(
+        "licenseValidTill"
+    )
+
+    doc.entitled_licenses = data.get(
+        "entitledLicenses"
+    )
+
+    doc.used_licenses = data.get(
+        "usedLicenses"
+    )
+
+    doc.remaining_licenses = data.get(
+        "remainingLicenses"
+    )
+
+    doc.last_sync_time = frappe.utils.now()
+
+    doc.save(ignore_permissions=True)
+
+    return {
+        "success": True,
+        "message": "License synced successfully"
+    }

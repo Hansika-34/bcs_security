@@ -141,7 +141,7 @@ app_include_js = [
 # Hook on document methods and events
 
 doc_events = {
-    "Zabbix Maintenance": {
+    "Monitoring Maintenance": {
         "after_insert": "bcs_security.api.zabbix_maintenance.after_insert"
     }
 }
